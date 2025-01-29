@@ -428,6 +428,9 @@ public struct BaseOnboardView: View {
 }
 
 public struct Onboard1View: View {
+    
+    public init() {}
+    
     public var body: some View {
         BaseOnboardView(
             backgroundImage: "Onboard1Background",
@@ -619,6 +622,8 @@ public class Wasdf: NSObject, ObservableObject {
 public struct MainTabBarView: View {
     
     @State private var selectedTabItem = 0
+    
+    public init() {}
     
     public var body: some View {
         TabView(selection: $selectedTabItem) {
