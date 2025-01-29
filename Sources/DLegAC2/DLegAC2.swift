@@ -55,6 +55,8 @@ public struct PreloaderView: View {
     
     @State private var rotationAngle: Double = 0
     
+    public init() {}
+    
     public var body: some View {
         ZStack {
             Color.white
