@@ -330,15 +330,20 @@ public struct PayWallView: View {
     }
 
     private var productDescription: String {
-        
-        if apphudProducts.isEmpty {
+        guard !apphudProducts.isEmpty else {
             return "loading products..."
+        }
+        
+        guard let skProduct = apphudProducts[0].skProduct else {
+            return "Product information is unavailable"
+        }
+        
+        let priceString = String(format: "$%.02f", skProduct.price.doubleValue)
+        
+        if apphudProducts[0].productId.contains("trial") {
+            return "Start to continue App \nwith a 3-day trial and \(priceString) per week"
         } else {
-            if apphudProducts[0].productId.contains("trial") {
-                return "Start to continue App \nwith a 3-day trial and \(String(format: "$%.02f", apphudProducts[0].skProduct!.price.doubleValue)) per week"
-            } else {
-                return "Start to continue App \nfor \(String(format: "$%.02f", apphudProducts[0].skProduct!.price.doubleValue)) per week"
-            }
+            return "Start to continue App \nfor \(priceString) per week"
         }
     }
     
